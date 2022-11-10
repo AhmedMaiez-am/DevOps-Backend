@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8089
-ADD /target/tpAchatProject-1.0.jar tpAchatProject-1.0.jar
-ENTRYPOINT ["java", "-jar", "/tpAchatProject-1.0.jar"]ng-boot:run
+ADD /target/devops.jar devops.jar
+ENTRYPOINT ["java", "-jar", "/devops.jar"]ng-boot:run
