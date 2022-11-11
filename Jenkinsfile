@@ -15,8 +15,8 @@ pipeline {
         }
         stage('sonar') {
             steps {
-              sh mvn sonar:sonar -Dsonar.projectKey=devops -Dsonar.host.url=http://192.168.1.11:9000 -Dsonar.login=ca4243aafb69466dbb09290b70be926c80936cb8
-                echo 'sonar'
+              sh 'mvn sonar:sonar -Dsonar.projectKey=devops -Dsonar.host.url=http://192.168.1.11:9000 -Dsonar.login=ca4243aafb69466dbb09290b70be926c80936cb8'
+                
             }
         }
           stage('build docker image') {
