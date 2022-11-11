@@ -1,10 +1,6 @@
 pipeline {
 
     agent any
-    environment{
-        registry = "ahmedmaiez/devops"
-        dockerImage = ''
-    }
 
     stages {
        stage ('GIT') {
@@ -44,22 +40,33 @@ pipeline {
         }
         stage('Build Docker image') {
             steps{
-                script {
-                    dockerImage = docker.build registry +":$BUILD_NUMBER"
+                script{
+                sh 'docker build -t dhiamaiez/devops .'
                 }
             }
         }
         stage('Connect to DockerHub') {
             steps {
-                sh 'docker login -e maiezahmed98@gmail.com -u ahmedmaiez -p "Drekelahbish98"'
+                script{
+                sh 'docker login -u dhiamaiez -p ahmedahmed'
+                }
             }
         }
-        stage('Push Docker image') {
+                stage('Push Docker image') {
             steps {
-                sh 'docker push ahmedmaiez/devops'
+                script{
+                sh 'docker push dhiamaiez/devops'
+                }
             }
         }
-    
+        stage('Run Spring && MySQL Containers') {
+            steps{
+                script {
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+   
     }
 
 }
