@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: dhiamaiez/devops
+    image: ahmeddhia/devops
     restart: always
     ports:
       - 8089:8089

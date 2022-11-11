@@ -41,24 +41,24 @@ pipeline {
         stage('Build Docker image') {
             steps{
                 script{
-                sh 'docker build -t dhiamaiez/devops .'
+                sh 'docker build -t ahmeddhia/devops .'
                 }
             }
         }
         stage('Connect to DockerHub') {
             steps {
                 script{
-                sh 'docker login -u dhiamaiez -p ahmedahmed'
+                sh 'docker login -u ahmeddhia -p ahmeddhia'
                 }
             }
         }
-        //         stage('Push Docker image') {
-        //     steps {
-        //         script{
-        //         sh 'docker push dhiamaiez/devops'
-        //         }
-        //     }
-        // }
+                stage('Push Docker image') {
+            steps {
+                script{
+                sh 'docker push ahmeddhia/devops'
+                }
+            }
+        }
         stage('Run Spring && MySQL Containers') {
             steps{
                 script {
