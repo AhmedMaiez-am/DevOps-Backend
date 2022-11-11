@@ -26,6 +26,12 @@ pipeline {
                     }
                     }
              }
+             
+             stage('Nexus') {
+            steps {
+                 sh 'mvn clean deploy -Dmaven.test.skip=true'
+            }
+        }
            stage('Docker login') {
                                  steps {
                                      script {
