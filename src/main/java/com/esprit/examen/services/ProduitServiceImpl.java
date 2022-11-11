@@ -28,7 +28,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public List<Produit> retrieveAllProduits() {
 		List<Produit> produits = (List<Produit>) produitRepository.findAll();
 		for (Produit produit : produits) {
-			log.info(" Produit : " + produit);
+			//log.info(" Produit : " + produit);
 		}
 		return produits;
 	}
@@ -54,7 +54,7 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public Produit retrieveProduit(Long produitId) {
 		Produit produit = produitRepository.findById(produitId).orElse(null);
-		log.info("produit :" + produit);
+		//log.info("produit :" + produit);
 		return produit;
 	}
 

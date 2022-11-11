@@ -33,7 +33,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	public List<Fournisseur> retrieveAllFournisseurs() {
 		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepository.findAll();
 		for (Fournisseur fournisseur : fournisseurs) {
-			log.info(" fournisseur : " + fournisseur);
+			//log.info(" fournisseur : " + fournisseur);
 		}
 		return fournisseurs;
 	}
