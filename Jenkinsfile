@@ -32,7 +32,7 @@ pipeline {
                sh 'mvn -Dmaven.test.skip=true deploy'
            }
        }
-        }
+        
            stage('Docker login') {
                                  steps {
                                      script {
