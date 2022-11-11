@@ -29,7 +29,7 @@ pipeline {
              
              stage('Nexus') {
             steps {
-                 sh 'mvn  deploy -Dmaven.test.skip=true'
+                 sh 'mvn clean deploy -Dmaven.test.skip=true'
             }
         }
            stage('Docker login') {
