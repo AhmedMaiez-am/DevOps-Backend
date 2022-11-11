@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    environment{
-    SONAR_LOGIN= 'ca4243aafb69466dbb09290b70be926c80936cb8'
-    SONAR_KEY = 'devops'
-    SONAR_URL = 'http://http://192.168.1.11:9000'
-    }
+    
     stages {
         stage('clean') {
             steps {
@@ -19,7 +15,10 @@ pipeline {
         }
         stage('sonar') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.projectKey=$SONAR_KEY'
+              sh mvn sonar:sonar \
+                -Dsonar.projectKey=devops \
+                -Dsonar.host.url=http://192.168.1.11:9000 \
+                -Dsonar.login=ca4243aafb69466dbb09290b70be926c80936cb8
                 echo 'sonar'
             }
         }
