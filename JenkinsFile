@@ -1,0 +1,65 @@
+pipeline {
+
+    agent any
+    environment{
+        registry = "ahmedmaiez/devops"
+        dockerImage = ''
+    }
+
+    stages {
+       stage ('GIT') {
+            steps {
+               echo "Getting Project from Git";
+                git branch: "ahmed",
+                    url: "https://github.com/AhmedMaiez-am/DevOps-Backend",
+                    credentialsId: "68dbec7f-2caf-4eca-b5ca-c24daa3341e7";
+            }
+        }
+
+        stage("MVN Clean") {
+            steps {
+                sh "mvn clean package -DskipTests"
+            }
+        }
+        stage("MVN Build") {
+            steps {
+                sh "mvn package -DskipTests"
+            }
+        }
+          stage("MVN Test") {
+            steps {
+                sh "mvn test"
+            }
+        }
+       
+        stage("SonarQube") {
+            steps {
+                sh "mvn sonar:sonar"
+            }
+        }
+        stage('Nexus') {
+            steps {
+                 sh 'mvn clean deploy -Dmaven.test.skip=true'
+            }
+        }
+        stage('Build Docker image') {
+            steps{
+                script {
+                    dockerImage = docker.build registry +":$BUILD_NUMBER"
+                }
+            }
+        }
+        stage('Connect to DockerHub') {
+            steps {
+                sh 'docker login -e maiezahmed98@gmail.com -u ahmedmaiez -p "Drekelahbish98"'
+            }
+        }
+        stage('Push Docker image') {
+            steps {
+                sh 'docker push ahmedmaiez/devops'
+            }
+        }
+    
+    }
+
+}
