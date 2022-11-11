@@ -16,7 +16,7 @@ pipeline {
          stage("MVN SonarQube") {
       
        		steps {
-        	  mvn sonar:sonar -Dsonar.projectKey=Devops -Dsonar.host.url=http://192.168.1.16:9000 -Dsonar.login=9882b98d70775551fbc1bd590616293f1a800810
+        	  sh 'mvn sonar:sonar -Dsonar.projectKey=Devops -Dsonar.host.url=http://192.168.1.16:9000 -Dsonar.login=9882b98d70775551fbc1bd590616293f1a800810'
       	}
     }
             stage('Test mvn') {
