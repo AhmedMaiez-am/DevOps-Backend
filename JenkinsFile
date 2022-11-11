@@ -52,13 +52,13 @@ pipeline {
                 }
             }
         }
-                stage('Push Docker image') {
-            steps {
-                script{
-                sh 'docker push dhiamaiez/devops'
-                }
-            }
-        }
+        //         stage('Push Docker image') {
+        //     steps {
+        //         script{
+        //         sh 'docker push dhiamaiez/devops'
+        //         }
+        //     }
+        // }
         stage('Run Spring && MySQL Containers') {
             steps{
                 script {
