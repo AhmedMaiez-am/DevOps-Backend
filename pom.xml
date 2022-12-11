@@ -141,12 +141,12 @@
     <distributionManagement>
         <snapshotRepository>
             <id>maven-snapshots</id>
-            <url>http://192.168.1.11:8081/repository/maven-snapshots</url>
+            <url>http://192.168.1.22:8081/repository/maven-snapshots</url>
             <layout>default</layout>
         </snapshotRepository>
         <repository>
             <id>maven-releases</id>
-            <url>http://192.168.1.11:8081/repository/maven-releases</url>
+            <url>http://192.168.1.22:8081/repository/maven-releases</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>
